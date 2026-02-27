@@ -18,13 +18,13 @@ function Scoreboard({score, bestScore}){
     )
 }
 
-function Gameboard({library}){
+function Gameboard({library, handleCardClick}){
     return (
     <div id="gameboard">
       {
         library.length !== 0 && library.map( pokemon => {
           return (
-            <div key={pokemon.id} className='pokemon-card'>
+            <div key={pokemon.id} className='pokemon-card' onClick={(e) => handleCardClick(e, pokemon.id)}>
               <h2>{pokemon.name}</h2>
               <img src={pokemon.url} alt={pokemon.name} />
             </div>
