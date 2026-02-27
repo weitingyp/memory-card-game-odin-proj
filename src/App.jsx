@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import { Gameboard } from './components.jsx';
 
 function App() {
 
@@ -26,18 +27,8 @@ function App() {
   }, [])
 
   return (
-    <div id="gameboard">
-      {
-        library.length !== 0 && library.map( pokemon => {
-          return (
-            <div key={pokemon.id} className='pokemon-card'>
-              <h2>{pokemon.name}</h2>
-              <img src={pokemon.url} alt={pokemon.name} />
-            </div>
-          )
-        })
-      }
-    </div>)
+    <Gameboard library={library} />
+  )
 }
 
 export default App
