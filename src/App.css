@@ -3,6 +3,24 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  display: grid;
+  grid-template-areas:
+    'title title scoreboard'
+    'gameboard gameboard gameboard';
+  grid-template-rows: auto 1fr;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+#title {
+  grid-area: title;
+}
+
+#scoreboard {
+  grid-area: scoreboard;
+}
+
+#gameboard {
+  grid-area: gameboard;
 }
 
 .logo {

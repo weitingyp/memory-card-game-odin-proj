@@ -1,5 +1,23 @@
 import './components.css';
 
+function Title(){
+    return (
+        <div id="title">
+            <h1>Memory Card Game</h1>
+            <h2>Click on a pokemon to earn points, but don't click on any more than once!</h2>
+        </div>
+    )
+}
+
+function Scoreboard({score, bestScore}){
+    return (
+        <div id="scoreboard">
+            <h2>Score: {score}</h2>
+            <h2>Best Score: {bestScore}</h2>
+        </div>
+    )
+}
+
 function Gameboard({library}){
     return (
     <div id="gameboard">
@@ -16,4 +34,4 @@ function Gameboard({library}){
     </div>)
 }
 
-export { Gameboard }
+export { Title, Scoreboard,Gameboard }

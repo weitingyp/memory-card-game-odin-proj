@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import { Gameboard } from './components.jsx';
+import { Title, Scoreboard, Gameboard } from './components.jsx';
 
 function App() {
 
@@ -26,8 +26,16 @@ function App() {
     initializeLibrary().then( (initLibrary) => setLibrary(initLibrary) );
   }, [])
 
+  // state to track score and best score
+  const [ score, setScore ] = useState(0);
+  const [ bestScore, setBestScore ] = useState(0);
+
   return (
-    <Gameboard library={library} />
+    <>
+      <Title />
+      <Scoreboard score={score} bestScore={bestScore} />
+      <Gameboard library={library} />
+    </>
   )
 }
 
