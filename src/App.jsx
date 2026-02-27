@@ -34,11 +34,24 @@ function App() {
   const [ score, setScore ] = useState(0);
   const [ bestScore, setBestScore ] = useState(0);
 
+  // shuffle library order of cards after every click
+  function shuffleLibrary(){
+    setLibrary( prevLibrary => {
+      const shuffledLibrary = [...prevLibrary];
+      for (let i = shuffledLibrary.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledLibrary[i], shuffledLibrary[j]] = [shuffledLibrary[j], shuffledLibrary[i]];
+      }
+      return shuffledLibrary;
+    })
+  }
+
   function handleCardClick(e, id){
     // if the pokemon is already picked, reset score and library
     if (library.find( pokemon => pokemon.id === id).isPicked){
       setScore(0);
       setLibrary(initialLibrary.current)
+      shuffleLibrary();
   } else { 
     // if the pokemon is not picked, update score and library
       setLibrary( prevLibrary => {
@@ -50,6 +63,7 @@ function App() {
           }
         })
       })
+      shuffleLibrary();
       setScore( prevScore => prevScore + 1);
       if (score + 1> bestScore) setBestScore( score + 1);
       }
